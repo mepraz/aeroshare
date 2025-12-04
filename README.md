@@ -158,6 +158,8 @@ fly deploy
 - Tailwind CSS
 - Zustand
 - WebRTC
+
+- and some mindfucks obn deployments and hostig.
 - qrcode.react
 
 ## License
