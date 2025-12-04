@@ -20,9 +20,34 @@ import {
 } from '@/types';
 
 const ICE_SERVERS: RTCIceServer[] = [
+    // Google STUN servers
     { urls: 'stun:stun.l.google.com:19302' },
     { urls: 'stun:stun1.l.google.com:19302' },
     { urls: 'stun:stun2.l.google.com:19302' },
+    { urls: 'stun:stun3.l.google.com:19302' },
+    { urls: 'stun:stun4.l.google.com:19302' },
+
+    // Additional public STUN servers for redundancy
+    { urls: 'stun:stun.services.mozilla.com' },
+    { urls: 'stun:stun.stunprotocol.org:3478' },
+
+    // Open Relay TURN server (free, public, for testing)
+    // In production, you should use your own TURN server
+    {
+        urls: 'turn:openrelay.metered.ca:80',
+        username: 'openrelayproject',
+        credential: 'openrelayproject',
+    },
+    {
+        urls: 'turn:openrelay.metered.ca:443',
+        username: 'openrelayproject',
+        credential: 'openrelayproject',
+    },
+    {
+        urls: 'turn:openrelay.metered.ca:443?transport=tcp',
+        username: 'openrelayproject',
+        credential: 'openrelayproject',
+    },
 ];
 
 const CHUNK_SIZE = 64 * 1024; // 64KB chunks

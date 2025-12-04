@@ -26,6 +26,21 @@ app.use(cors({
 app.use(express.json());
 
 // HTTP Routes
+app.get('/', (_req, res) => {
+    res.json({
+        name: 'AeroShare Signaling Server',
+        version: '1.0.0',
+        status: 'running',
+        endpoints: {
+            health: '/health',
+            createRoom: 'POST /create-room',
+            websocket: 'ws:// or wss://',
+        },
+        cors: CORS_ORIGIN.split(',').map(s => s.trim()),
+        uptime: process.uptime(),
+    });
+});
+
 app.post('/create-room', (_req, res) => {
     const roomId = uuidv4().substring(0, 8); // Short room ID
     roomManager.createRoom(roomId);
